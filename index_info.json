@@ -1,0 +1,8 @@
+{
+  "number_of_chunks": 467,
+  "embedding_dimensions": 384,
+  "chunk_sha256": "677ead92b51b63b9a18fc288619a1cec8cac03dbd06d6482bfd451fdc0447316",
+  "index_type": "IndexFlatIP",
+  "metric": "inner_product",
+  "normalized": true
+}

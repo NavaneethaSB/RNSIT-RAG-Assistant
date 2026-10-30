@@ -1,0 +1,5 @@
+RNSIT has a library.
+The library is open from 8 AM to 8 PM.
+Students can borrow up to 3 books.
+The library has computers for student use.
+Students must return books within 14 days.

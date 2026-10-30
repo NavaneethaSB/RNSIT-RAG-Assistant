@@ -1,0 +1,13 @@
+.app-shell{height:100dvh;min-height:100vh}
+.main-panel{height:100dvh;min-height:0;overflow:hidden}
+.chat-area{overflow-y:auto;overscroll-behavior:contain}
+.composer-wrap{flex:none}
+.source-card{width:min(100%,360px);align-items:flex-start;overflow-wrap:anywhere}
+.source-number{flex:0 0 auto;min-width:48px;padding-top:1px}
+.source-text{overflow-wrap:anywhere}
+.source-text small{max-width:100%}
+.source-excerpt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin-top:7px;color:#66736a;font-size:10px;line-height:1.5;white-space:normal}
+.source-text .source-rank{margin-top:6px;color:#8b958d;white-space:normal}
+.source-note{font-size:9px;line-height:1.5;color:#8b958d;margin:8px 0 0}
+.mobile-new-chat{display:none;border:1px solid #e1e7e0;border-radius:8px;background:#fff;color:#365640;height:31px;width:32px;font-size:19px;line-height:1}
+@media(max-width:700px){.source-card{width:100%}.mobile-new-chat{display:block}.topbar{gap:10px}.topbar-label{white-space:nowrap}}
