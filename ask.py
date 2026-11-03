@@ -824,8 +824,6 @@ def generate_answer_with_source(question, retrieved_chunks, client, corpus_chunk
             "title": original["title"],
             "url": original["url"],
             "text": answer_text[:MAX_SOURCE_EXCERPT_CHARS],
-            "retrieval_rank": chunk.get("retrieval_rank", 999),
-            "retrieval_score": chunk.get("retrieval_score"),
         })
 
     if not candidates:
@@ -931,8 +929,6 @@ Rules:
             "title": original["title"],
             "url": original["url"],
             "excerpt": selected["text"][:MAX_SOURCE_EXCERPT_CHARS],
-            "retrieval_rank": selected["retrieval_rank"],
-            "retrieval_score": selected["retrieval_score"],
         })
 
     # Do not attach a source to an explicit abstention.
