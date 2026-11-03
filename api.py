@@ -45,10 +45,23 @@ class AskRequest(BaseModel):
     @classmethod
     def trim_conversation(cls, values):
         if isinstance(values, dict):
+            values = dict(values)
             conversation = values.get("conversation", [])
 
             if isinstance(conversation, list):
-                values["conversation"] = conversation[-8:]
+                trimmed = []
+
+                for turn in conversation[-8:]:
+                    if isinstance(turn, dict):
+                        turn = dict(turn)
+                        content = turn.get("content")
+
+                        if isinstance(content, str) and len(content) > 10000:
+                            turn["content"] = content[-10000:]
+
+                    trimmed.append(turn)
+
+                values["conversation"] = trimmed
 
         return values
 
