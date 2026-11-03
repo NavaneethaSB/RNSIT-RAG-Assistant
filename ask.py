@@ -119,8 +119,10 @@ def load_retrieval_resources():
 
     with CHUNKS_FILE.open("r", encoding="utf-8") as file:
         chunks = json.load(file)
-    chunk_sha256 = hashlib.sha256(CHUNKS_FILE.read_bytes()).hexdigest()
-
+    chunk_bytes = CHUNKS_FILE.read_bytes()
+    canonical_chunk_bytes = chunk_bytes.replace(b"\r\n", b"\n")
+    chunk_sha256 = hashlib.sha256(canonical_chunk_bytes).hexdigest()
+    
     if not isinstance(chunks, list) or not chunks:
         raise ValueError("chunks.json must contain a non-empty list.")
 
