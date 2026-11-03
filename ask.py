@@ -773,7 +773,6 @@ def build_answer_sources(question, answer, retrieved_chunks, corpus_chunks=None)
         "title": title,
         "url": url,
         "excerpt": text.strip()[:MAX_SOURCE_EXCERPT_CHARS],
-        ,
     }]
 
 # ---------------- ANSWER GENERATION ----------------
