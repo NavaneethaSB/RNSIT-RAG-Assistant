@@ -32,7 +32,7 @@ def _retrieval_terms(text: str) -> list[str]:
 class ConversationTurn(BaseModel):
     model_config = ConfigDict(extra="forbid")
     role: Literal["user", "assistant"]
-    content: str = Field(min_length=1, max_length=2000)
+    content: str = Field(min_length=1, max_length=10000)
 
 
 class AskRequest(BaseModel):
