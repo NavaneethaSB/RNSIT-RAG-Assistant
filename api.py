@@ -8,7 +8,7 @@ from typing import Literal
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from ask import generate_answer_with_source, load_resources, retrieve_chunks, select_relevant_chunks
 
@@ -37,9 +37,20 @@ class ConversationTurn(BaseModel):
 
 class AskRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    question: str = Field(min_length=1, max_length=2000)
-    conversation: list[ConversationTurn] = Field(default_factory=list, max_length=8)
 
+    question: str = Field(min_length=1, max_length=2000)
+    conversation: list[ConversationTurn] = Field(default_factory=list)
+
+    @model_validator(mode="before")
+    @classmethod
+    def trim_conversation(cls, values):
+        if isinstance(values, dict):
+            conversation = values.get("conversation", [])
+
+            if isinstance(conversation, list):
+                values["conversation"] = conversation[-8:]
+
+        return values
 
 class Source(BaseModel):
     id: str
