@@ -7,7 +7,7 @@ type Message = { id: number; role: 'user' | 'assistant'; text: string; sources?:
 
 const suggestions = [
   'What programs does RNSIT offer?',
-  'Tell me about the CSE department',
+  'Tell me about the MCA department',
   'What is the vision and mission of RNSIT?',
 ]
 
@@ -104,7 +104,7 @@ function App() {
             }}}>{message.text}</ReactMarkdown></div> : <p>{message.text}</p>}</div>
             {message.error && message.retryQuestion && <button className="copy-button" onClick={() => retryMessage(message)} disabled={loading}>Retry</button>}
             {message.role === 'assistant' && !message.error && <>
-              {message.sources && message.sources.length > 0 && <div className="sources"><div className="sources-title"><span>↗</span> SOURCE FOR THIS ANSWER</div><div className="source-list">{message.sources.slice(0, 1).map(source => <a className="source-card" key={source.id} href={source.url} target="_blank" rel="noreferrer"><span className="source-number">{source.id}</span><span className="source-text"><strong>{source.title}</strong><small>{source.url.replace(/^https?:\/\//, '')}</small><span className="source-excerpt">{source.excerpt}</span><small className="source-rank">Retrieved rank {source.retrieval_rank}{source.retrieval_score !== null ? ` · RRF ${source.retrieval_score.toFixed(4)}` : ''}</small></span><span className="source-open" aria-hidden="true">↗</span></a>)}</div><p className="source-note">This official page supports the answer.</p></div>}
+              {message.sources && message.sources.length > 0 && <div className="sources"><div className="sources-title"><span>↗</span> SOURCE FOR THIS ANSWER</div><div className="source-list">{message.sources.slice(0, 1).map(source => <a className="source-card" key={source.id} href={source.url} target="_blank" rel="noreferrer"><span className="source-number">{source.id}</span><span className="source-text"><strong>{source.title}</strong><small>{source.url.replace(/^https?:\/\//, '')}</small><span className="source-excerpt">{source.excerpt}</span></span><span className="source-open" aria-hidden="true">↗</span></a>)}</div><p className="source-note">This official page supports the answer.</p></div>}
               <button className="copy-button" onClick={() => void copyAnswer(message)} aria-label="Copy answer">▢ {copied === message.id ? 'Copied' : 'Copy answer'}</button>
             </>}
           </div>
