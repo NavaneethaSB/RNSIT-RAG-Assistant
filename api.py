@@ -70,8 +70,7 @@ class Source(BaseModel):
     title: str
     url: str
     excerpt: str
-    retrieval_rank: int
-    retrieval_score: float | None = None
+  
 
 
 class AskResponse(BaseModel):
