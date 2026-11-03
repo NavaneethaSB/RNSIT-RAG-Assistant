@@ -1,6 +1,7 @@
 faiss-cpu
 numpy
-sentence-transformers
+onnxruntime
+transformers
 rank-bm25
 groq
 python-dotenv
